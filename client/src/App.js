@@ -1,16 +1,17 @@
-import React from 'react'
+import React             from 'react'
+import { Router, Route } from 'react-router-dom';
+
+import Landing from './components/Landing';
+import history from './history';
 
 const App = () => {
-  fetch('/api/application-configuration');
-
   return (
-
-    <div>
-      GIVEW
-    </div>
+    <Router history={history}>
+      <Route path="/" component={Landing} />
+    </Router>
   )
-}
+};
 
-export default App
+export default App;
 
 
