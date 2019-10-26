@@ -12,8 +12,8 @@ import history from './history';
 const App = () => {
   return (
     <Router history={history}>
-      <Navbar />
       <div className="container">
+        <Navbar isSignedIn/>
         <Switch>
           <Route path='/signout' component={Signout} />
           <Route path="/signin" component={Signin} />

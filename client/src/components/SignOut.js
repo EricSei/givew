@@ -3,13 +3,13 @@ import history from '../history';
 
 class Signout extends Component {
   componentDidMount(){
-    localStorage.setItem('token', '');
+    localStorage.removeItem('token');
     history.push('/');
   }
   render() {
     return (
       <div>
-        <h1>Signing Out...</h1>
+        <div>Signing Out...</div>
       </div>
     );
   }
