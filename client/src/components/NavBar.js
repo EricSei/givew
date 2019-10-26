@@ -13,6 +13,7 @@ const Navbar = () => {
       <div>
         {/* Dropdown Options */}
         <ul id="user-dropdown" className="dropdown-content">
+					<li><Link to="/profile" className="quarter-bigger">Profile</Link></li>
           <li><Link to="/donate/create" className="quarter-bigger">Create Donation</Link></li>
           <li><Link to="/items/reserved" className="quarter-bigger">Reserved Items</Link></li>
           <li><Link to="/items/donated" className="quarter-bigger">Donated Items</Link></li>                
@@ -24,7 +25,9 @@ const Navbar = () => {
             <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <div className="">
               <ul className="right hide-on-med-and-down">
-                <li className=""><Link to="/#" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">Profile</Link></li>
+                <li className=""><Link to="/profile" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">
+									{/* Account Name Placeholder*/}Account Name<i className="material-icons right">arrow_drop_down</i>
+								</Link></li>
                 <li className=""><Link to="/signout" className="quarter-bigger">Sign Out</Link></li>
               </ul>
             </div> 
