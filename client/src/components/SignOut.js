@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import history from '../history';
+import React, { useContext } from 'react';
 
-class Signout extends Component {
-  componentDidMount(){
-    localStorage.removeItem('token');
-    history.push('/');
-  }
-  render() {
-    return (
-      <div>
-        <div>Signing Out...</div>
-      </div>
-    );
-  }
+import history     from '../history';
+import AuthContext from '../contexts/AuthContext';
+
+const Signout = () => {
+  const { setToken } = useContext(AuthContext);
+
+  localStorage.removeItem('token');
+  setToken('');
+  history.push('/');
+
+  return (
+    <div>Signing Out...</div>
+  );
 }
 
 

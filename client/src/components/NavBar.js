@@ -1,12 +1,14 @@
-import React    from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import useMaterialize from '../hooks/useMaterialize';
+import AuthContext from '../contexts/AuthContext';
 
 const Navbar = () => {
   useMaterialize();
+  const { token } = useContext(AuthContext);
 
-  return localStorage.getItem('token')
+  return token
     ? (
       <div>
         {/* Dropdown Options */}
@@ -23,7 +25,7 @@ const Navbar = () => {
             <div className="">
               <ul className="right hide-on-med-and-down">
                 <li className=""><Link to="/#" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">Profile</Link></li>
-                <li className=""><Link to="/#" className="quarter-bigger">Sign Out</Link></li>
+                <li className=""><Link to="/signout" className="quarter-bigger">Sign Out</Link></li>
               </ul>
             </div> 
           </div>
