@@ -1,16 +1,24 @@
-import React from 'react'
+import React                     from 'react'
+import { Router, Route, Switch } from 'react-router-dom';
+
+import './App.css';
+import Landing from './components/LandingPage';
+import Signin  from './components/SigninPage';
+import history from './history';
 
 const App = () => {
-  fetch('/api/application-configuration');
-
   return (
-
-    <div>
-      GIVEW
-    </div>
+    <Router history={history}>
+      <div className="container">
+        <Switch>
+          <Route path="/signin" component={Signin} />
+          <Route path="/" component={Landing} />
+        </Switch>
+      </div>
+    </Router>
   )
-}
+};
 
-export default App
+export default App;
 
 

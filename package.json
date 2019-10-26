@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node api/app.js",
-    "dev": "nodemon -r dotenv/config api/app.js",
+    "backend": "nodemon -r dotenv/config api/app.js",
+    "frontend": "npm start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build"
   },
@@ -14,13 +16,16 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "history": "^4.10.1",
     "morgan": "^1.9.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
+    "react-router-dom": "^5.1.2",
     "sequelize": "^5.19.2",
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {
+    "concurrently": "^5.0.0",
     "dotenv": "^8.1.0",
     "nodemon": "^1.19.3",
     "sequelize-cli": "^5.5.1"
