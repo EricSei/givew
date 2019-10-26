@@ -1,13 +1,20 @@
-import React             from 'react'
-import { Router, Route } from 'react-router-dom';
+import React                     from 'react'
+import { Router, Route, Switch } from 'react-router-dom';
 
-import Landing from './components/Landing';
+import './App.css';
+import Landing from './components/LandingPage';
+import Signin  from './components/SigninPage';
 import history from './history';
 
 const App = () => {
   return (
     <Router history={history}>
-      <Route path="/" component={Landing} />
+      <div className="container">
+        <Switch>
+          <Route path="/signin" component={Signin} />
+          <Route path="/" component={Landing} />
+        </Switch>
+      </div>
     </Router>
   )
 };
