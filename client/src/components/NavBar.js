@@ -24,9 +24,6 @@ class Navbar extends Component {
                                     <li className="">
                                         <Link to="/profile" className="quarter-bigger">Profile</Link>
                                     </li>
-                                    <li className="">
-                                        <Link to="/signout" className="quarter-bigger">Sign Out</Link>
-                                    </li>
                                     <li>
                                         <Link to="/donate/create" className="quarter-bigger">Create Donation</Link>
                                     </li>
@@ -35,6 +32,9 @@ class Navbar extends Component {
                                     </li>
                                     <li>
                                         <Link to="/items/donated" className="quarter-bigger">Donated Items</Link>
+                                    </li>
+                                    <li className="">
+                                        <Link to="/signout" className="quarter-bigger">Sign Out</Link>
                                     </li>
                                 </ul>
                             </div> 
