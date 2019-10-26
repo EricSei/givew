@@ -25,7 +25,7 @@ const Navbar = () => {
             <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             <div className="">
               <ul className="right hide-on-med-and-down">
-                <li className=""><Link to="#" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">
+                <li className=""><Link to="/profile" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">
 									{/* Account Name Placeholder*/}Account Name<i className="material-icons right">arrow_drop_down</i>
 								</Link></li>
                 <li className=""><Link to="/signout" className="quarter-bigger">Sign Out</Link></li>
