@@ -1,5 +1,5 @@
 const express = require('express');
-const jwt_secret = require('../config/dev');
+const keys = require('../config/keys');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const { User } = require('../models');
@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
         }
     };
 
-    jwt.sign(payload, jwt_secret.jwtSecret, (err, token) => {
+    jwt.sign(payload, keys.jwtSecret, (err, token) => {
         if (err) {
             throw err;
         }
@@ -63,7 +63,7 @@ router.post('/signin', async (req, res) => {
 
     jwt.sign(
         payload,
-        jwt_secret.jwtSecret,
+        keys.jwtSecret,
         (err, token) => {
             if (err) throw err;
             res.json({ token });
