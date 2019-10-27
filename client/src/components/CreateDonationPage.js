@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import useMaterialize from '../hooks/useMaterialize';
+import useDonation    from '../hooks/useDonation';
 
 const CreateDonationPage = () => {
   useMaterialize();
+  const [handleChange, handleUploadChange] = useDonation();
+
   return (
     <div className="row create-form-container">
       {/* Item Details */}
@@ -18,15 +21,15 @@ const CreateDonationPage = () => {
         {/* Form */}
         <div className="row">
           <div className="col s12 input-field">
-            <input id="item-name" type="text" />
+            <input name="name" id="item-name" type="text" onChange={handleChange} />
             <label htmlFor="item-name">Name of Item</label>
           </div>
           <div className="col s12 input-field">
-            <textarea id="item-desc" className="materialize-textarea" data-length="200" />
+            <textarea name="desc" id="item-desc" className="materialize-textarea" data-length="200" onChange={handleChange} />
             <label htmlFor="item-desc" id="item-desc-label">Item Description</label>
           </div>
           <div className="col s12 input-field">
-            <select name="category" id="category">
+            <select name="category" id="category" onChange={handleChange}>
               <option value="other" disabled selected>Select Category</option>
               <option value="furniture">Furniture</option>
               <option value="electronics">Electronics</option>
@@ -38,7 +41,7 @@ const CreateDonationPage = () => {
           <div className="col s12 input-field file-field">
             <div className="btn">
               <span>Browse</span>
-              <input type="file" multiple />
+              <input name="photos" id="photos" type="file" multiple onChange={handleUploadChange} />
             </div>
             <div className="file-path-wrapper">
               <input className="file-path validate" type="text" placeholder="Upload photos of your item." />
@@ -58,11 +61,11 @@ const CreateDonationPage = () => {
         {/* Form */}
         <div className="row">
           <div className="col s12 input-field">
-            <input id="location" type="text" />
+            <input name="location" id="location" type="text" onChange={handleChange} />
             <label htmlFor="location">Street Address</label>
           </div>
           <div className="col s12 input-field">
-            <input id="zip" type="number" />
+            <input name="zipcode" id="zip" type="number" onChange={handleChange} />
             <label htmlFor="zip">Zipcode</label>
           </div>
         </div>
