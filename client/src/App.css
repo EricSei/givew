@@ -25,11 +25,24 @@
   height: 100%;
 }
 
-.side-bg {
+.side-bg-left {
   background: #80cbc4;
   width: 100%;
   height: 100%;
   border-radius: 2.5rem 0 0 2.5rem;
+}
+
+.side-bg-right {
+  background: #80cbc4;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 2.5rem 2.5rem 0;
+}
+
+.side-fill {
+  background: #80cbc4;
+  width: 100%;
+  height: 100%;
 }
 
 .corner-container {
