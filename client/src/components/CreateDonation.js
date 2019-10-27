@@ -31,10 +31,10 @@ const CreateDonation = props => {
 
   return (
     <div className="row fullscreen-container">
-      <div className="col s3 slide-col">
-        <div className="side-fill" style={{height: "120%"}}></div>
+      <div className="col s1 slide-col">
+        <div className="side-fill" style={{height: "140%"}}></div>
       </div>
-      <div className="col s6 form-col">
+      <div className="col s10 form-col">
         <div className="row form-container">
           <div className="col s12">
             <div className="form-title">Create Donation</div>
@@ -55,15 +55,15 @@ const CreateDonation = props => {
             </div>
             <div className="input-field col s12">
               <label htmlFor="description">Description</label>
-              <textarea rows="10" cols="33" name = "description" className="materialize-textarea" id="description" onChange={e => e} />  
+              <textarea rows="10" cols="33" name = "description" className="materialize-textarea" id="description" placeholder="Describe your item" onChange={e => e} />  
             </div> 
             <div className="input-field col s12">
               <label htmlFor="zipCode" required>Zip Code</label>
               <input name = "zipCode" id="zipCode" type="text" onChange={e => e}></input>  
             </div> 
             <div className="input-field col s12">
-              <label htmlFor="location">Location (Could be any location info like address)</label>
-              <input name = "location" id="location" type="text" onChange={e => e}></input>  
+              <label htmlFor="location">Location</label>
+              <textarea rows="20" cols="33" name ="location" id="location" type="text" className="materialize-textarea" placeholder="ex) a street address" onChange={e => e}></textarea>  
             </div> 
             <div className="input-field col s12">
               <select name="category" id="category">
@@ -85,8 +85,8 @@ const CreateDonation = props => {
           </div>
         </div>
       </div>
-      <div className="col s3 slide-col">
-        <div className="side-fill" style={{height: "120%"}}></div>
+      <div className="col s1 slide-col">
+        <div className="side-fill" style={{height: "140%"}}></div>
       </div>
     </div>
   );
