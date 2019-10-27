@@ -7,7 +7,7 @@ const SigninPage = () => {
     <>
       <div className="row fullscreen-container">
         <div className="col s6 slide-col">
-          <div className="side-bg"></div>
+          <div className="side-bg-left"></div>
         </div>
         <div className="col s6 form-col">
           {/* Top-Right Corner */}

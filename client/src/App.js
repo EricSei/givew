@@ -9,6 +9,7 @@ import Navbar           from './components/NavBar';
 import Signout          from './components/SignOut';
 import Landing          from './components/LandingPage';
 import Signin           from './components/SigninPage';
+import CreateDonation   from './components/CreateDonation';
 
 const App = () => {
   useAuth();
@@ -20,6 +21,7 @@ const App = () => {
         <Switch>
           <Route path='/signout' component={Signout} />
           <Route path="/signin" component={Signin} />
+          <Route path="/donate/create/" component={CreateDonation} />
           <Route path="/" component={Landing} />
         </Switch>
       </div>
