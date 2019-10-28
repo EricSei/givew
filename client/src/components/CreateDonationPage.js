@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 
 import useMaterialize from '../hooks/useMaterialize';
 import useDonation    from '../hooks/useDonation';
+import history        from '../history';
 
 const CreateDonationPage = () => {
   useMaterialize();
   const [handleChange, handleUploadChange] = useDonation();
+
+  const onGoBack = e => {
+    history.goBack();
+  }
 
   return (
     <div className="row create-form-container">
@@ -14,8 +19,8 @@ const CreateDonationPage = () => {
         {/* Header */}
         <div className="row">
           <div className="col s12">
-            <div className="create-form-title">Item Details</div>
-            <div className="create-form-subtitle">This section contains the basic details of your item.</div>
+            <div className="create-form-title">Donate An Item</div>
+            <div className="create-form-subtitle">Please provide details about the item you are donating.</div>
           </div>
         </div>
         {/* Form */}
@@ -72,7 +77,7 @@ const CreateDonationPage = () => {
       </div>
       {/* Footer Buttons */}
       <div className="col s6 input-field">
-        <button className="btn">Go Back</button>
+        <button className="btn" onClick = {onGoBack}>Go Back</button>
       </div>
       <div className="col s6 input-field right-align">
         <button className="btn">Submit to Donate Item</button>
