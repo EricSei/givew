@@ -1,8 +1,11 @@
 import React from 'react';
 
 import GoogleIcon from '../assets/logos/google-icon.png'
+import useSignin  from '../hooks/useSignin';
 
 const SigninPage = () => {
+  const [handleChange, handleSubmit] = useSignin();
+  
   return (
     <>
       <div className="row fullscreen-container">
@@ -30,15 +33,15 @@ const SigninPage = () => {
             {/* Form */}
             <div className="row input-container">
               <div className="input-field col s12">
-                <input type="text" id="email" name="email" />
+                <input type="text" id="email" name="email" onChange={handleChange} />
                 <label htmlFor="email">Email</label>
               </div>
               <div className="input-field col s12">
-                <input type="password" id="password" name="password" />
+                <input type="password" id="password" name="password" onChange={handleChange} />
                 <label htmlFor="password">Password</label>
               </div>
               <div className="input-field col s12">
-                <button className="btn form-btn">Sign in</button>
+                <button className="btn form-btn" onClick={handleSubmit}>Sign in</button>
               </div>
             </div>
             {/* Open Authorization Options */}
