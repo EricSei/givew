@@ -1,0 +1,150 @@
+/* -------------------- Begin: Fluid Container Tweak -------------------- */
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+.container {
+  width: 100%;
+  max-width: initial;
+  min-height: 100vh;
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+}
+
+.container > .row {
+  margin: 0;
+}
+
+.container > .row > .col {
+  padding: 0;
+}
+
+/* ---------------------- End: Fluid Container Tweak ---------------------- */
+
+/* ------------------------- Begin: Signin Page  ------------------------- */
+.fullscreen-container {
+  height: 100vh;
+}
+
+.slide-col {
+  height: 100%;
+}
+
+.side-bg-left {
+  background: #80cbc4;
+  width: 100%;
+  height: 100%;
+  border-radius: 2.5rem 0 0 2.5rem;
+}
+
+.corner-container {
+  margin-top: 2rem;
+  margin-right: 2rem;
+}
+
+.create-btn {
+  background: rgba(255, 255, 255, 0);
+  color: #000;
+  border: 0.5px solid #000;
+  margin: 0 1.5rem;
+}
+
+.create-btn:hover {
+  background-color: #FFF!important;
+}
+
+.form-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5rem;
+  flex-grow: 1;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.form-subtitle {
+  font-size: 1.3rem;
+  color: #595959;
+}
+
+.input-container {
+  padding: 0 0.8rem;
+}
+
+.form-btn {
+  width: 100%;
+  background: #0091ea;
+}
+
+.oauth-title {
+  font-weight: lighter;
+  font-size: 1.7rem;
+  margin: 1rem 0;
+}
+
+.facebook-btn {
+  background: #3b5999;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-transform: none;
+}
+
+.google-btn {
+  background: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  text-transform: none;
+  padding-right: 2rem;
+}
+
+.fa-facebook-f {
+  margin-right: 0.4rem;
+}
+
+.google-icon {
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+/* -------------------------- End: Signin Page  -------------------------- */
+
+/* --------------------------- Begin: Navbar  --------------------------- */
+.quarter-bigger {
+  font-size: 1.25rem;
+}
+/* ---------------------------- End: Navbar  ---------------------------- */
+nav {
+  background-image: radial-gradient(#82bb92, #8cc59c, #95cea5);
+}
+
+/* -------------------- Begin: Create Donation Page  -------------------- */
+.create-form-container {
+  background: #f9fbf8;
+  flex-grow: 1;
+  padding: 2.5rem 4rem;
+}
+
+.create-form-detail {
+  padding: 1.5rem 1.5rem!important;
+}
+
+.create-form-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.create-form-subtitle {
+  font-weight: lighter;
+}
+
+/* --------------------- End: Create Donation Page  --------------------- */
