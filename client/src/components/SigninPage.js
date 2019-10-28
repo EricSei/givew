@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import GoogleIcon from '../assets/logos/google-icon.png'
-import backend    from '../apis/backend';
+import useSignin  from '../hooks/useSignin';
 
 const SigninPage = () => {
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
-  
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
-  
-  const handleSubmit = () => {
-    backend.post('/user/signin', form);
-  }
+  const [handleChange, handleSubmit] = useSignin();
   
   return (
     <>
@@ -40,10 +32,6 @@ const SigninPage = () => {
             </div>
             {/* Form */}
             <div className="row input-container">
-              <div className="input-field col s12">
-                <input type="text" id="username" name="username" onChange={handleChange} />
-                <label htmlFor="username">Username</label>
-              </div>
               <div className="input-field col s12">
                 <input type="text" id="email" name="email" onChange={handleChange} />
                 <label htmlFor="email">Email</label>
