@@ -43,7 +43,20 @@ const Navbar = () => {
         </ul>
       </div>
     ) 
-    : null;
+    : (
+      <nav>
+        <div className="nav-wrapper">
+          <Link to='/' className="brand-logo">Givew</Link>
+          <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+          <div className="">
+            <ul className="right hide-on-med-and-down">
+              <li className=""><Link to="/signup" className="quarter-bigger">Sign Up</Link></li>
+              <li className=""><Link to="/signin" className="quarter-bigger">Sign In</Link></li>
+            </ul>
+          </div> 
+        </div>
+      </nav>
+    );
 }
 
 
