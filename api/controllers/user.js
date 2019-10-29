@@ -1,13 +1,16 @@
 const express = require('express');
-
 const jwt = require('jsonwebtoken');
-const router = express.Router();
-const { User } = require('../models');
 const bcrypt = require('bcrypt');
+const { User } = require('../models');
 
+const router = express.Router();
 const jwtSecret = process.env.JWT_SECRET;
 
 router.post('/signup', async (req, res) => {
+
+    if (!jwtSecret) {
+        return res.status(404).json({ Error: "Invalid Auth Token." })
+    }
 
     const { name, email, password } = req.body;
     let user = await User.findOne({ where: { email: email } });
@@ -19,11 +22,11 @@ router.post('/signup', async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
-    const isUser = User.create({
+    const isUser = await User.create({
         name: name,
         email: email,
         password: hashedPassword
-    });
+    })
 
     const payload = {
         user: {
@@ -33,8 +36,9 @@ router.post('/signup', async (req, res) => {
 
     jwt.sign(payload, jwtSecret, (err, token) => {
         if (err) {
-            throw err;
+            return res.status(404).json({ error: err.message });
         }
+
         res.json({ token });
     })
 
@@ -47,13 +51,13 @@ router.post('/signin', async (req, res) => {
     let user = await User.findOne({ where: { email: email } });
 
     if (!user) {
-        return res.status(400).json({ msg: 'User Does not Exist.' });
+        return res.status(400).json({ error: 'User Does not Exist.' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-        return res.status(400).json({ msg: 'Invalid Credentials' });
+        return res.status(400).json({ error: 'Invalid Credentials' });
     }
 
     // get userId
