@@ -9,6 +9,7 @@ import Navbar             from './components/NavBar';
 import Signout            from './components/SignOut';
 import Landing            from './components/LandingPage';
 import Signin             from './components/SigninPage';
+import Signup             from './components/SignUpPage';
 import CreateDonationPage from './components/CreateDonationPage';
 
 const App = () => {
@@ -17,17 +18,36 @@ const App = () => {
   return (
     <Router history={history}>
       <div className="container">
-        <Navbar/>
         <Switch>
-          <Route path="/donate/create/" component={CreateDonationPage} />
-          <Route path='/signout' component={Signout} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/" component={Landing} />
+          <Route path="/signin" component={SigninContainer} />
+          <Route path="/signup" component={SignupContainer} />
+          <Route component={DefaultContainer} />
         </Switch>
       </div>
     </Router>
   )
 };
+
+const SigninContainer = () => (
+  <>
+    <Route path="/signin" component={Signin} />
+  </>
+);
+
+const SignupContainer = () => (
+  <>
+    <Route path="/signup" component={Signup} />
+  </>
+);
+
+const DefaultContainer = () => (
+  <>
+    <Navbar />
+    <Route path="/donate/create" component={CreateDonationPage} />
+    <Route path='/signout' component={Signout} />
+    <Route path="/" component={Landing} />
+  </>
+);
 
 export default () => <AuthProvider><App /></AuthProvider>;
 
