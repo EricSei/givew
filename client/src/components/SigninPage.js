@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import GoogleIcon from '../assets/logos/google-icon.png'
 import useSignin  from '../hooks/useSignin';
@@ -18,7 +19,7 @@ const SigninPage = () => {
             <div className="col s12 right-align">
               <div className="corner-container">
                 <span>Don't have an account?</span>
-                <button className="btn create-btn">Create an Account</button>
+                <Link to="/signup" className="btn create-btn">Create an Account</Link>
               </div>
             </div>
           </div>
