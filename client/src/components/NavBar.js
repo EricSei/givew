@@ -2,13 +2,15 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import useMaterialize from '../hooks/useMaterialize';
-import AuthContext from '../contexts/AuthContext';
+import AuthContext    from '../contexts/AuthContext';
+import UserContext    from '../contexts/UserContext'
 
 const Navbar = () => {
   useMaterialize();
-  const { token } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
+  const { user }   = useContext(UserContext);
 
-  return token
+  return isAuth
     ? (
       <div>
         {/* Dropdown Options */}
@@ -26,7 +28,7 @@ const Navbar = () => {
             <div className="">
               <ul className="right hide-on-med-and-down">
                 <li className=""><Link to="/profile" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">
-									{/* Account Name Placeholder*/}Account Name<i className="material-icons right">arrow_drop_down</i>
+									{user.username}<i className="material-icons right">arrow_drop_down</i>
 								</Link></li>
                 <li className=""><Link to="/signout" className="quarter-bigger">Sign Out</Link></li>
               </ul>

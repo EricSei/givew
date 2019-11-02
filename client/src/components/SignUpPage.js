@@ -54,7 +54,7 @@ const SignUpPage = () => {
               <div className="col s12">
                 <div className="oauth-title">Or sign up using</div>
                 <button className="btn form-btn facebook-btn">
-                  <i class="fab fa-facebook-f" />
+                  <i className="fab fa-facebook-f" />
                   Sign up with Facebook
                                 </button>
                 <button className="btn form-btn google-btn">

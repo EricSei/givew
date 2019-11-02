@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import history            from './history';
+import { UserProvider }   from './contexts/UserContext';
 import { AuthProvider }   from './contexts/AuthContext';
 import useAuth            from './hooks/useAuth';
 import Navbar             from './components/NavBar';
@@ -49,6 +50,12 @@ const DefaultContainer = () => (
   </>
 );
 
-export default () => <AuthProvider><App /></AuthProvider>;
+export default () => (
+  <UserProvider>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </UserProvider>
+);
 
 

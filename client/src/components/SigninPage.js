@@ -33,24 +33,26 @@ const SigninPage = () => {
             </div>
             {/* Form */}
             <div className="row input-container">
-              <div className="input-field col s12">
-                <input type="text" id="email" name="email" onChange={handleChange} />
-                <label htmlFor="email">Email</label>
-              </div>
-              <div className="input-field col s12">
-                <input type="password" id="password" name="password" onChange={handleChange} />
-                <label htmlFor="password">Password</label>
-              </div>
-              <div className="input-field col s12">
-                <button className="btn form-btn" onClick={handleSubmit}>Sign in</button>
-              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="input-field col s12">
+                  <input type="text" id="email" name="email" onChange={handleChange} />
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className="input-field col s12">
+                  <input type="password" id="password" name="password" onChange={handleChange} />
+                  <label htmlFor="password">Password</label>
+                </div>
+                <div className="input-field col s12">
+                  <input className="btn form-btn" type="submit" value="Sign in" />
+                </div>
+              </form>
             </div>
             {/* Open Authorization Options */}
             <div className="row input-container">
               <div className="col s12">
                 <div className="oauth-title">Or sign in using</div>
                 <button className="btn form-btn facebook-btn">
-                  <i class="fab fa-facebook-f" />
+                  <i className="fab fa-facebook-f" />
                   Sign in with Facebook
                 </button>
                 <button className="btn form-btn google-btn">
