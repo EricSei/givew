@@ -1,22 +1,24 @@
 'use strict';
 const { Model } = require('sequelize');
-const bcrypt    = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {}
+  class User extends Model { }
 
   User.init({
-    username    : { type: DataTypes.STRING },
-    email       : { type: DataTypes.STRING, unique: true, validate: { isEmail: true }, },
+    username: { type: DataTypes.STRING },
+    email: { type: DataTypes.STRING, unique: true, validate: { isEmail: true }, },
     passwordHash: { type: DataTypes.STRING },
-    password    : { type: DataTypes.VIRTUAL }
+    password: { type: DataTypes.VIRTUAL }
   }, {
-    sequelize,
-    modelName: 'user'
-  });
+      sequelize,
+      modelName: 'user'
+    });
 
   User.associate = models => {
     // Define associations here.
+    models.User.hasMany(models.Item, { foreignKey: 'donatorId' });
+    models.User.hasMany(models.Item, { foreignKey: 'receiverId' });
   };
 
   User.beforeSave((user, options) => {
