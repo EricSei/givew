@@ -37,8 +37,14 @@ module.exports = (sequelize, DataTypes) => {
             //     model: User,
             //     key: 'id',
             // }
-        }
-
+        },
+        // category_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'Category',
+        //         key: 'id',
+        //     }
+        // }
 
     }, {
             sequelize,
@@ -52,10 +58,3 @@ module.exports = (sequelize, DataTypes) => {
     return Item;
 };
 
-// category_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'Category',
-        //         key: 'id',
-        //     }
-        // }
