@@ -6,10 +6,16 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model { }
 
   User.init({
-    username: { type: DataTypes.STRING },
-    email: { type: DataTypes.STRING, unique: true, validate: { isEmail: true }, },
+    username: { 
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3,255],
+      }
+    },
+    email: { type: DataTypes.STRING, unique: true, allowNull: false, validate: { isEmail: true }, },
     passwordHash: { type: DataTypes.STRING },
-    password: { type: DataTypes.VIRTUAL }
+    password: { type: DataTypes.VIRTUAL, allowNull: false, validate: {notNull: true, len: [1, 255]} }
   }, {
       sequelize,
       modelName: 'user'
