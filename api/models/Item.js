@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
   Item.associate = models => {
     models.Item.belongsTo(models.User, { foreignKey: 'donatorId' });
     models.Item.belongsTo(models.User, { foreignKey: 'receiverId' });
+    models.Item.belongsTo(models.Category);
+    models.Item.hasMany(models.Photo);
   };
 
   return Item;
