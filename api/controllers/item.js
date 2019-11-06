@@ -21,4 +21,14 @@ router.post('/create', passport.isAuthenticated(), (req, res) => {
     .catch(err => { res.status(400).json({ error: err }) });
 });
 
+router.get('/sort', passport.isAuthenticated(), (req, res) => {
+  let queries = [];
+  for (let query in req.query) {
+    queries.push([query, req.query[query]]);
+  }
+  Item.findAll({ order: queries })
+    .then(result => { res.json(result) })
+    .catch(error => { res.status(400).json({ error }) });
+});
+
 module.exports = router;
