@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import backend from '../apis/backend';
+import history     from '../history';
 
 export default () => {
-  const [form, setForm] = useState({ name: '', desc: '', category: '', photos: null, location: '', zipcode: null });
+  const [form, setForm] = useState({ name: '', description: '', category: '', photos: null, location: '', zipcode: null });
+  const [errMsg, setErrMsg] = useState('');
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,5 +15,16 @@ export default () => {
     setForm({ ...form, photos: photos.files });
   }
 
-  return [handleChange, handleUploadChange, form];
+  const onHandleSubmit = e => {
+    backend.post('/item/create', form)
+    .then( res => {
+      history.push('/items/donated');
+    })
+    .catch(err => {
+      console.error(err);
+      setErrMsg('Invalid input, please try again!')
+    })
+  }
+
+  return [handleChange, handleUploadChange, onHandleSubmit, errMsg, form];
 }
