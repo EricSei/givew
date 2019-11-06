@@ -5,7 +5,13 @@ module.exports = (sequelize, DataTypes) => {
   class Category extends Model { }
 
   Category.init({
-    name: { type: DataTypes.STRING, allowNull: false }
+    name: { 
+      type: DataTypes.STRING, 
+      allowNull: false,
+      validate: {
+        len: [2,255]
+      }
+    }
   }, {
       sequelize,
       modelName: 'category'

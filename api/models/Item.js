@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
   Item.init({
     name: { 
       type: DataTypes.STRING, 
-      allowNull: false 
+      allowNull: false,
+      validate: {
+        len: [2,255]
+      } 
     },
     description: {
       type: DataTypes.TEXT

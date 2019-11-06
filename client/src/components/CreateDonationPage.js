@@ -6,7 +6,7 @@ import history        from '../history';
 
 const CreateDonationPage = () => {
   useMaterialize();
-  const [handleChange, handleUploadChange] = useDonation();
+  const [handleChange, handleUploadChange, onHandleSubmit, errMsg] = useDonation();
 
   const onGoBack = e => {
     history.goBack();
@@ -23,6 +23,10 @@ const CreateDonationPage = () => {
             <div className="create-form-subtitle">Please provide details about the item you are donating.</div>
           </div>
         </div>
+        {/* error string placeholder */}
+        <div className="red-text">
+          { errMsg }
+        </div>
         {/* Form */}
         <div className="row">
           <div className="col s12 input-field">
@@ -30,7 +34,7 @@ const CreateDonationPage = () => {
             <label htmlFor="item-name">Name of Item</label>
           </div>
           <div className="col s12 input-field">
-            <textarea name="desc" id="item-desc" className="materialize-textarea" data-length="200" onChange={handleChange} />
+            <textarea name="description" id="item-desc" className="materialize-textarea" data-length="200" onChange={handleChange} />
             <label htmlFor="item-desc" id="item-desc-label">Item Description</label>
           </div>
           <div className="col s12 input-field">
@@ -80,7 +84,7 @@ const CreateDonationPage = () => {
         <button className="btn" onClick = {onGoBack}>Go Back</button>
       </div>
       <div className="col s6 input-field right-align">
-        <button className="btn">Submit to Donate Item</button>
+        <button className="btn" onClick={onHandleSubmit}>Submit to Donate Item</button>
       </div>
     </div>
   );
