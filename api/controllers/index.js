@@ -6,7 +6,8 @@ const router = express.Router();
 
 const appConfigController = require('./appConfig.js');
 const authController = require('./auth');
-const userController = require('./user.js');
+const userController = require('./user');
+const itemController = require('./item');
 
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
@@ -14,6 +15,7 @@ const userController = require('./user.js');
 router.use('/application-configuration', appConfigController);
 router.use('/auth', authController);
 router.use('/user', userController);
+router.use('/item', itemController);
 
 
 module.exports = router;
