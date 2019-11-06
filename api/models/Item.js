@@ -5,23 +5,22 @@ module.exports = (sequelize, DataTypes) => {
   class Item extends Model { }
 
   Item.init({
-
-    name: { type: DataTypes.STRING, allowNull: false },
+    name: { 
+      type: DataTypes.STRING, 
+      allowNull: false 
+    },
     description: {
-      type: DataTypes.TEXT,
-
+      type: DataTypes.TEXT
     },
     location: {
-      type: DataTypes.TEXT,
-
+      type: DataTypes.TEXT
     },
     zipcode: {
       type: DataTypes.INTEGER
-    }
-  }, {
-      sequelize,
-      modelName: 'item'
-    });
+    }}, {
+    sequelize,
+    modelName: 'item'
+  });
 
   Item.associate = models => {
     models.Item.belongsTo(models.User, { foreignKey: 'donatorId' });
