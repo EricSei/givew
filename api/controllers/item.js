@@ -23,7 +23,7 @@ const upload = multer({ storage: storage });
 cloudinary.config({
   cloud_name: 'imagicat',
   api_key: '582611221428748',
-  api_secret: 'tbqbAAGOqYy3dvCgq8HGRWuvx34'
+  api_secret: process.env.CLOUDINARY_SECRET
 });
 
 // ----------------------------------------------------------------------------
