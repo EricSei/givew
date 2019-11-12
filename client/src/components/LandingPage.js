@@ -1,9 +1,11 @@
 import React from 'react';
+import LatestItem from './items/LatestItems';
 
 const Landing = () => {
   return (
-    <div>
+    <div >
       Landing Page
+      <LatestItem />
     </div>
   );
 };

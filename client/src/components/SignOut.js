@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
-import history     from '../history';
-import backend     from '../apis/backend';
+import history from '../history';
+import backend from '../apis/backend';
 import AuthContext from '../contexts/AuthContext';
 
 const Signout = () => {
@@ -11,6 +11,7 @@ const Signout = () => {
     backend.post('/auth/signout');
     setIsAuth(false);
     history.push('/');
+    // eslint-disable-next-line
   }, []);
 
   return (

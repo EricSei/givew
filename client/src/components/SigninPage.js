@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import GoogleIcon from '../assets/logos/google-icon.png'
-import useSignin  from '../hooks/useSignin';
+import useSignin from '../hooks/useSignin';
 
 const SigninPage = () => {
   const [handleChange, handleSubmit] = useSignin();
-  
+
   return (
     <>
       <div className="row fullscreen-container">
@@ -56,7 +56,7 @@ const SigninPage = () => {
                   Sign in with Facebook
                 </button>
                 <button className="btn form-btn google-btn">
-                  <img src={GoogleIcon} width="25px" className="google-icon" />
+                  <img src={GoogleIcon} width="25px" className="google-icon" alt='google-icon' />
                   Sign in with Google
                 </button>
               </div>

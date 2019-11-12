@@ -1,8 +1,8 @@
-import React    from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import GoogleIcon from '../assets/logos/google-icon.png';
-import useSignup  from '../hooks/useSignup';
+import useSignup from '../hooks/useSignup';
 
 const SignUpPage = () => {
   const [handleChange, handleSubmit] = useSignup();
@@ -58,9 +58,9 @@ const SignUpPage = () => {
                   Sign up with Facebook
                                 </button>
                 <button className="btn form-btn google-btn">
-                  <img src={GoogleIcon} width="25px" className="google-icon" />
+                  <img src={GoogleIcon} width="25px" className="google-icon" alt='google-icon' />
                   Sign up with Google
-                                </button>
+                </button>
               </div>
             </div>
           </div>
