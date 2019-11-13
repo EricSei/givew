@@ -57,12 +57,12 @@ router.post('/create', passport.isAuthenticated(), upload.array('photos'), async
     .catch(err => { res.status(400).json({ error: err }) });
 });
 
-router.get('/sort', passport.isAuthenticated(), (req, res) => {
+router.get('/sort', (req, res) => {
   let queries = [];
   for (let query in req.query) {
     queries.push([query, req.query[query]]);
   }
-  Item.findAll({ order: queries })
+  Item.findAll({ order: queries, where: { receiverId: null } })
     .then(result => { res.json(result) })
     .catch(error => { res.status(400).json({ error }) });
 });
