@@ -5,6 +5,7 @@ import './App.css';
 import history            from './history';
 import { UserProvider }   from './contexts/UserContext';
 import { AuthProvider }   from './contexts/AuthContext';
+import { ItemsProvider }  from './contexts/ItemsContext'
 import useAuth            from './hooks/useAuth';
 import Navbar             from './components/NavBar';
 import Signout            from './components/SignOut';
@@ -53,7 +54,9 @@ const DefaultContainer = () => (
 export default () => (
   <UserProvider>
     <AuthProvider>
-      <App />
+      <ItemsProvider>
+        <App />
+      </ItemsProvider>
     </AuthProvider>
   </UserProvider>
 );
