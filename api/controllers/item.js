@@ -67,4 +67,13 @@ router.get('/sort', passport.isAuthenticated(), (req, res) => {
     .catch(error => { res.status(400).json({ error }) });
 });
 
+router.get('/reserved', passport.isAuthenticated(), (req, res) => {
+  const id = req.user.id;
+  Item.findAll({ where: { receiverId: id }})
+  .then(result => {
+    res.json(result)
+  })
+  .catch(error => { res.status(404).json({ error }) })
+});
+
 module.exports = router;
