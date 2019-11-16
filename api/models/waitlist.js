@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Waitlist.init({
       mesage: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(1023),
         allowNull: false
       }
     }, {
