@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   Item.associate = models => {
     models.Item.belongsTo(models.User, { foreignKey: 'donatorId' });
     models.Item.belongsTo(models.User, { foreignKey: 'receiverId' });
+    models.Item.hasMany(models.Waitlist, { foreignKey: 'itemId' });
   };
 
   return Item;

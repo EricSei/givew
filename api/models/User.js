@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     // Define associations here.
     models.User.hasMany(models.Item, { foreignKey: 'donatorId' });
     models.User.hasMany(models.Item, { foreignKey: 'receiverId' });
+    models.User.hasMany(models.Waitlist, { foreignKey: 'recieverId' });
   };
 
   User.beforeSave((user, options) => {
