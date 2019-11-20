@@ -14,6 +14,7 @@ import Signin             from './components/SigninPage';
 import Signup             from './components/SignUpPage';
 import CreateDonationPage from './components/CreateDonationPage';
 import ItemPage           from './components/ItemPage';
+import WaitlistPage       from './components/WaitlistPage';
 
 const App = () => {
   useAuth();
@@ -36,6 +37,7 @@ const DefaultContainer = () => (
     <Navbar />
     <Route path="/donate/create" component={CreateDonationPage} />
     <Route path="/signout" component={Signout} />
+    <Route path="/items/waitlist" component={WaitlistPage} />
     <Route path="/item" component={ItemPage} />
     <Route path="/" component={Landing} exact />
   </>
