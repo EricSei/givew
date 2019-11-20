@@ -13,6 +13,7 @@ import Landing            from './components/LandingPage';
 import Signin             from './components/SigninPage';
 import Signup             from './components/SignUpPage';
 import CreateDonationPage from './components/CreateDonationPage';
+import ItemPage           from './components/ItemPage';
 
 const App = () => {
   useAuth();
@@ -21,8 +22,8 @@ const App = () => {
     <Router history={history}>
       <div className="container">
         <Switch>
-          <Route path="/signin" component={SigninContainer} />
-          <Route path="/signup" component={SignupContainer} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
           <Route component={DefaultContainer} />
         </Switch>
       </div>
@@ -30,24 +31,13 @@ const App = () => {
   )
 };
 
-const SigninContainer = () => (
-  <>
-    <Route path="/signin" component={Signin} />
-  </>
-);
-
-const SignupContainer = () => (
-  <>
-    <Route path="/signup" component={Signup} />
-  </>
-);
-
 const DefaultContainer = () => (
   <>
     <Navbar />
     <Route path="/donate/create" component={CreateDonationPage} />
-    <Route path='/signout' component={Signout} />
-    <Route path="/" component={Landing} />
+    <Route path="/signout" component={Signout} />
+    <Route path="/item" component={ItemPage} />
+    <Route path="/" component={Landing} exact />
   </>
 );
 
