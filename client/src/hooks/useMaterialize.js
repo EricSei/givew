@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 
 import M from "materialize-css/dist/js/materialize.min.js";
+import AuthContext from '../contexts/AuthContext';
 
 export default () => {
+  const { isAuth } = useContext(AuthContext)
   useEffect(() => {
     const sidenav = document.querySelector(".sidenav");
     const dropdown = document.querySelector(".dropdown-trigger");
@@ -13,5 +15,5 @@ export default () => {
     M.Dropdown.init(dropdown, { inDuration: 300, outDuration: 225, constrainWidth: true, hover: true, coverTrigger: false });
     M.FormSelect.init(categorySelector, {dropdownOptions: {}});
     M.CharacterCounter.init(itemDesc);
-  }, []);
+  }, [isAuth]);
 };
