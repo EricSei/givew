@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import useItems from '../hooks/useItems'
 
-
 const Landing = () => {
-  let [items] = useItems(); // items is an array of items that will be rendered 
+  let [items] = useItems();
   
   return (
     <div>
       {
         items.map(item => {
           return (
-            <div>
+            <Link key={item.id} to={{ pathname: '/item', state: item }}>
               <div>{item.name}</div>
               <img src={item.photos[0]} style={{ width: "150px", height: "auto" }} />
-            </div>
+            </Link>
           )
         })
       }

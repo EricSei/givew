@@ -27,8 +27,8 @@ export default () => {
     formData.append('zipcode', form.zipcode);
 
     backend.post('/item/create', formData)
-    .then( res => {
-      history.push('/items/donated');
+    .then(res => {
+      history.push('/');
     })
     .catch(err => {
       setErrMsg('Invalid input, please try again!')
