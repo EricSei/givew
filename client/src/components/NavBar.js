@@ -17,8 +17,8 @@ const Navbar = () => {
         <ul id="user-dropdown" className="dropdown-content">
 					<li><Link to="/profile" className="quarter-bigger">Profile</Link></li>
           <li><Link to="/donate/create" className="quarter-bigger">Create Donation</Link></li>
-          <li><Link to="/items/reserved" className="quarter-bigger">Reserved Items</Link></li>
-          <li><Link to="/items/donated" className="quarter-bigger">Donated Items</Link></li>                
+          <li><Link to="/items/waitlist" className="quarter-bigger">My Waitlist</Link></li>
+          <li><Link to="/items/donated" className="quarter-bigger">My Bidlist</Link></li>                
         </ul>
         {/* Main Navbar */}
         <nav>
