@@ -27,19 +27,9 @@ router.post('/waitlist/create', passport.isAuthenticated(), (req, res) => {
 // @desc Retrieve all rows from waitlist that belong to this receiver.
 // @access Private
 router.get('/waitlist/', passport.isAuthenticated(), (req, res) => {
-  Waitlist.findAll({ where: { receiverId: req.user.id } })
+  Waitlist.findAll({ where: { receiverId: req.user.id }, include: [{ model: Item }]})
     .then(myWaitlist => { 
-      myWaitlist = myWaitlist.map(entry => entry.dataValues)
-      let itemQueries = myWaitlist.map(entry => Item.findByPk(entry.itemId))
-      Promise.all(itemQueries)
-        .then(items => {
-          myWaitlist.map(entry => {
-            entry['item'] = items.filter(item =>entry.itemId == item.dataValues.id)[0];
-            return entry;
-          });
-          res.json(myWaitlist)
-        })
-        .catch(error => { res.status(404).json({ error: error.stack }) });
+      res.json(myWaitlist);
     })
     .catch(error => { res.status(404).json({ error: error.stack }) });
 });
