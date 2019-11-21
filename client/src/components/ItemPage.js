@@ -1,21 +1,31 @@
 import React from 'react';
 
 import useMaterialize from '../hooks/useMaterialize';
+import useItem from '../hooks/useItem';
+
 
 const ItemPage = props => {
   useMaterialize();
+  console.log(props);
+  const [handleRequestItem, handleChangeMessage] = useItem();
   
   return (
     <div>
-      <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Enter a message:</h4>
-      <textarea class="materialize-textarea" data-length="120" placeholder="Your message" />
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+      <div id="modal1" className="modal">
+        <div className="modal-content">
+          <h4>Enter a message:</h4>
+          <textarea className="materialize-textarea" data-length="120" placeholder="Your message" onChange={handleChangeMessage} />
+        </div>
+        <div className="modal-footer">
+          <a 
+            // href="#!" 
+            className="modal-close waves-effect waves-green btn-flat" 
+            onClick = {e => handleRequestItem(e, props.location.state.id)}
+          >
+            Agree
+          </a>
+        </div>
+      </div>
       <div>Photos: </div>
       {
         props.location.state.photos.map(photo => {

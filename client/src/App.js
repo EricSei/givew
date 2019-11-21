@@ -5,7 +5,8 @@ import './App.css';
 import history            from './history';
 import { UserProvider }   from './contexts/UserContext';
 import { AuthProvider }   from './contexts/AuthContext';
-import { ItemsProvider }  from './contexts/ItemsContext'
+import { ItemsProvider }  from './contexts/ItemsContext';
+import { ItemProvider }   from './contexts/itemContext';
 import useAuth            from './hooks/useAuth';
 import Navbar             from './components/NavBar';
 import Signout            from './components/SignOut';
@@ -47,7 +48,9 @@ export default () => (
   <UserProvider>
     <AuthProvider>
       <ItemsProvider>
-        <App />
+        <ItemProvider>
+          <App />
+        </ItemProvider>
       </ItemsProvider>
     </AuthProvider>
   </UserProvider>
