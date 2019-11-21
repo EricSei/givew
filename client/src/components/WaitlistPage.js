@@ -19,7 +19,7 @@ const WaitlistPage = () => {
           ? <div>None</div>
           : waitlist.map(item => {
               return (
-                <div>{item.id}, {item.mesage}</div>
+                <div>{item.id}, {item.message}</div>
               )
             })
       }
