@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class Waitlist extends Model { }
 
   Waitlist.init({
-      mesage: {
+      message: {
         type: DataTypes.STRING(1023),
         allowNull: false
       }
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Waitlist.associate = models => {
-      models.Waitlist.belongsTo(models.User, { foreignKey: 'recieverId' });
+      models.Waitlist.belongsTo(models.User, { foreignKey: 'receiverId' });
       models.Waitlist.belongsTo(models.Item, { foreignKey: 'itemId' });
   };
 
