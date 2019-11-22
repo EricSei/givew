@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import backend from '../apis/backend';
 import history from '../history';
-import ItemContext from '../contexts/itemContext';
+import ItemContext from '../contexts/ItemContext';
 
 export default () => {
   const {itemReqMessage, setItemReqMessage} = useContext(ItemContext);

@@ -17,13 +17,13 @@ const ItemPage = props => {
           <textarea className="materialize-textarea" data-length="120" placeholder="Your message" onChange={handleChangeMessage} />
         </div>
         <div className="modal-footer">
-          <a 
-            // href="#!" 
+          <div 
+            style = {{cursor : 'pointer'}} 
             className="modal-close waves-effect waves-green btn-flat" 
             onClick = {e => handleRequestItem(e, props.location.state.id)}
           >
             Agree
-          </a>
+          </div>
         </div>
       </div>
       <div>Photos: </div>
