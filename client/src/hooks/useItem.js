@@ -1,10 +1,12 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import backend from '../apis/backend';
 import history from '../history';
 import ItemContext from '../contexts/ItemContext';
+import AuthContext from '../contexts/AuthContext';
 
 export default () => {
-  const {itemReqMessage, setItemReqMessage} = useContext(ItemContext);
+  const {itemReqMessage, setItemReqMessage, waitlistable, setWaitlistable} = useContext(ItemContext);
+  const { isAuth } = useContext(AuthContext);
 
   const handleChangeMessage = e => {
     setItemReqMessage(e.target.value);
@@ -20,5 +22,5 @@ export default () => {
       });
   }
 
-  return [handleRequestItem, handleChangeMessage, itemReqMessage]; 
+  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, setWaitlistable, isAuth}; 
 }
