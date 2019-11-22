@@ -16,17 +16,15 @@ router.get('/', (req, res) => {
 router.post('/waitlist/create', passport.isAuthenticated(), (req, res) => {
   const itemId = req.body.itemId;
   const userId = req.user.id;
-  console.log("Auth: ",userId);
-  Item.findAll({ where: { donatorId: userId } })
-    .then(results => {
-      if(results.length > 0){
-        throw Error("You can't waitlist an item you already own!!!")
-      }
-      return Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } })
-    })
-    .then( results => { 
-      if(results.length > 0){
-        throw Error("No duplicate entries!!!")
+  Promise.all([
+    Item.findAll({ where: { donatorId: userId } }), 
+    Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } })
+  ])
+    .then( results => {
+      if(results[0].length > 0) {
+        throw Error("You can't waitlist an item you already own!!!");
+      } else if (results[1].length > 0) {
+        throw Error("No duplicate entries!!!");
       }
       return Waitlist.create({
         message: req.body.message,
@@ -37,6 +35,27 @@ router.post('/waitlist/create', passport.isAuthenticated(), (req, res) => {
     .then(result => { res.json(result) })
     .catch(err => { 
       res.status(400).json({ error: err});
+    });
+});
+
+// @route GET /api/receiver/waitlist/waitlistable/item/:id
+// @desc Checks if the user can waitlist the item
+// @access Private 
+router.get('/waitlist/waitlistable/item/:id', passport.isAuthenticated(), (req, res) => {
+  const itemId = req.params.id;
+  const userId = req.user.id;
+  Promise.all([
+    Item.findAll({ where: { donatorId: userId } }), 
+    Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } })
+  ])
+    .then( results => {
+      if(results[0].length > 0 || results[1].length > 0)
+        res.json({ waitlistable : false});
+      else
+        res.json({ waitlistable: true })
+    })
+    .catch(err => { 
+      res.status(404).json({ error: err});
     });
 });
 
