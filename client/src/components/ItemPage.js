@@ -1,24 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import useMaterialize from '../hooks/useMaterialize';
+import AuthContext from '../contexts/AuthContext';
 import useItem from '../hooks/useItem';
-import backend from '../apis/backend';
-
 
 const ItemPage = props => {
   useMaterialize();
-  const {handleRequestItem, handleChangeMessage, waitlistable, setWaitlistable, isAuth} = useItem();
-
-  useEffect(() => {
-    backend.get(`/receiver/waitlist/waitlistable/item/${props.location.state.id}`)
-    .then(res => {
-      setWaitlistable(res.data.waitlistable)
-    })
-    .catch(err => {
-      console.error(err.message);
-      console.error(err.stack);
-    });
-  }, []);
+  const { isAuth } = useContext(AuthContext);
+  const { handleRequestItem, handleChangeMessage, waitlistable } = useItem(props.location.state.id);
 
   const requestButton = waitlistable && isAuth? 
     (

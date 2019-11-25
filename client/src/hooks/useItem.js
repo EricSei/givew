@@ -1,12 +1,22 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+
+import ItemContext from '../contexts/ItemContext';
 import backend from '../apis/backend';
 import history from '../history';
-import ItemContext from '../contexts/ItemContext';
-import AuthContext from '../contexts/AuthContext';
 
-export default () => {
-  const {itemReqMessage, setItemReqMessage, waitlistable, setWaitlistable} = useContext(ItemContext);
-  const { isAuth } = useContext(AuthContext);
+export default itemId => {
+  const { itemReqMessage, setItemReqMessage, waitlistable, setWaitlistable} = useContext(ItemContext);
+
+  useEffect(() => {
+    backend.get(`/receiver/waitlist/waitlistable/item/${itemId}`)
+    .then(res => {
+      setWaitlistable(res.data.waitlistable)
+    })
+    .catch(err => {
+      console.error(err.message);
+      console.error(err.stack);
+    });
+  }, []);
 
   const handleChangeMessage = e => {
     setItemReqMessage(e.target.value);
@@ -22,5 +32,5 @@ export default () => {
       });
   }
 
-  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, setWaitlistable, isAuth}; 
+  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, setWaitlistable}; 
 }

@@ -48,14 +48,14 @@ router.get('/waitlist/waitlistable/item/:id', passport.isAuthenticated(), (req, 
     Item.findAll({ where: { donatorId: userId } }), 
     Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } })
   ])
-    .then( results => {
+    .then(results => {
       if(results[0].length > 0 || results[1].length > 0)
-        res.json({ waitlistable : false});
+        res.json({ waitlistable : false });
       else
-        res.json({ waitlistable: true })
+        res.json({ waitlistable: true });
     })
     .catch(err => { 
-      res.status(404).json({ error: err});
+      res.status(404).json({ error: err });
     });
 });
 
