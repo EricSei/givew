@@ -1,11 +1,11 @@
-import { useContext, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import ItemContext from '../contexts/ItemContext';
 import backend from '../apis/backend';
 import history from '../history';
 
 export default itemId => {
-  const { itemReqMessage, setItemReqMessage, waitlistable, setWaitlistable} = useContext(ItemContext);
+  const [itemReqMessage, setItemReqMessage] = useState('');
+  const [waitlistable, setWaitlistable] = useState(false);
 
   useEffect(() => {
     backend.get(`/receiver/waitlist/waitlistable/item/${itemId}`)
@@ -32,5 +32,5 @@ export default itemId => {
       });
   }
 
-  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, setWaitlistable}; 
+  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable }; 
 }
