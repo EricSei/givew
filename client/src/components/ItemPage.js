@@ -7,7 +7,7 @@ import useItem from '../hooks/useItem';
 const ItemPage = props => {
   const { isAuth } = useContext(AuthContext);
   useMaterialize();
-  const { handleRequestItem, handleChangeMessage, waitlistable } = useItem(props.location.state.id);
+  const { handleRequestItem, handleChangeMessage, waitlistable, initCarousel } = useItem(props.location.state.id);
 
   const requestButton = (
     <div>
@@ -29,15 +29,22 @@ const ItemPage = props => {
       <button className={`btn modal-trigger ${isAuth && waitlistable? "able" : "disabled"}`} data-target="req-modal">Request Item</button>
     </div>
   );
+
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var elems = document.querySelectorAll('.carousel');
+  //   var instances = M.Carousel.init(elems, options);
+  // });
   
   return (
     <div>
       <div>Photos: </div>
-      {
-        props.location.state.photos.map(photo => {
-          return <img src={photo} style={{ width: "150px", height: "auto" }} />
-        })
-      }
+      <div className="carousel" onLoad={initCarousel}>
+        {
+          props.location.state.photos.map(photo => {
+            return <span className="carousel-item"><img src={photo} style={{ width: "150px", height: "auto" }} /></span>
+          })
+        }  
+      </div>
       <div>{props.location.state.name}</div>
       <div>{props.location.state.description}</div>
       { requestButton }
