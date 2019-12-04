@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import backend from '../apis/backend';
 import history from '../history';
+import M from "materialize-css";
 
 export default itemId => {
   const [itemReqMessage, setItemReqMessage] = useState('');
@@ -10,7 +11,7 @@ export default itemId => {
   useEffect(() => {
     backend.get(`/receiver/waitlist/waitlistable/item/${itemId}`)
     .then(res => {
-      setWaitlistable(res.data.waitlistable)
+      setWaitlistable(res.data.waitlistable);
     })
     .catch(err => {
       console.error(err.message);
@@ -32,5 +33,12 @@ export default itemId => {
       });
   }
 
-  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable }; 
+  const initCarousel = e => {
+    let elems = document.querySelectorAll('.carousel');
+    let instances = M.Carousel.init(elems, { 
+      indicators: true
+    });
+  }
+
+  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, initCarousel}; 
 }
