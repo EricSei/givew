@@ -15,6 +15,7 @@ import Signup             from './components/SignUpPage';
 import CreateDonationPage from './components/CreateDonationPage';
 import ItemPage           from './components/ItemPage';
 import WaitlistPage       from './components/WaitlistPage';
+import BidlistPage        from './components/BidlistPage';
 
 const App = () => {
   useAuth();
@@ -38,6 +39,7 @@ const DefaultContainer = () => (
     <Route path="/donate/create" component={CreateDonationPage} />
     <Route path="/signout" component={Signout} />
     <Route path="/items/waitlist" component={WaitlistPage} />
+    <Route path="/items/bidlist" component={BidlistPage} />
     <Route path="/item" component={ItemPage} />
     <Route path="/" component={Landing} exact />
   </>
