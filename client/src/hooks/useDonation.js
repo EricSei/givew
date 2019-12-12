@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import backend from '../apis/backend';
-import history     from '../history';
+import moment from 'moment';
 
-import M from "materialize-css/dist/js/materialize.min.js";
+import backend from '../apis/backend';
+import history from '../history';
+import M       from "materialize-css/dist/js/materialize.min.js";
 
 export default () => {
-  const [form, setForm] = useState({ name: '', description: '', category: '', photos: null, location: '', zipcode: null });
+  const [form, setForm] = useState({ name: '', description: '', category: '', photos: [], location: '', zipcode: null });
   const [errMsg, setErrMsg] = useState('');
   const [dateTimes, setDateTimes] = useState([{ date: null, time: null }]);
-  
+
   useEffect(() => {
     const datepickers = document.querySelectorAll(".datepicker");
     const timepickers = document.querySelectorAll(".timepicker");
