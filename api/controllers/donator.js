@@ -28,4 +28,14 @@ router.get('/bidlist/item/:id', passport.isAuthenticated(), (req, res) => {
     .catch(error => res.status(400).json({ error }));
 });
 
+// @route PUT /api/donator/bidlist/item/decline/:id
+// @desc Decline a receiver's request.
+// @access Private
+router.put('/bidlist/item/decline/:id', passport.isAuthenticated(), (req, res) => {
+  // Remove a waitlist row where receiverId == req.body.receiverId.
+  Waitlist.destroy({ where: { itemId: req.params.id, receiverId: req.body.receiverId } })
+    .then(result => res.json(result))
+    .catch(err => res.status(400).json({ error: err }));
+});
+
 module.exports = router;
