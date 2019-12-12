@@ -16,6 +16,8 @@ router.get('/', (req, res) => {
 router.post('/waitlist/create', passport.isAuthenticated(), (req, res) => {
   const itemId = req.body.itemId;
   const userId = req.user.id;
+  const time = new Date(req.body.selectedSlot);
+  
   Promise.all([
     Item.findAll({ where: { donatorId: userId } }), 
     Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } })
@@ -29,7 +31,8 @@ router.post('/waitlist/create', passport.isAuthenticated(), (req, res) => {
       return Waitlist.create({
         message: req.body.message,
         receiverId: userId,
-        itemId: itemId
+        itemId: itemId,
+        time: time
       });
     })
     .then(result => { res.json(result) })
@@ -46,13 +49,14 @@ router.get('/waitlist/waitlistable/item/:id', passport.isAuthenticated(), (req, 
   const userId = req.user.id;
   Promise.all([
     Item.findAll({ where: { donatorId: userId } }), 
-    Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } })
+    Waitlist.findAll({ where: { receiverId: userId, itemId: itemId } }),
+    Item.findOne({ where: { id: itemId } })
   ])
     .then(results => {
       if(results[0].length > 0 || results[1].length > 0)
-        res.json({ waitlistable : false });
+        res.json({ waitlistable : false, item: results[2] });
       else
-        res.json({ waitlistable: true });
+        res.json({ waitlistable: true, item: results[2] });
     })
     .catch(err => { 
       res.status(404).json({ error: err });

@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     location: {
       type: DataTypes.TEXT
     },
+    timeSlots: {
+      type: DataTypes.ARRAY(DataTypes.DATE)
+    },
     zipcode: {
       type: DataTypes.INTEGER
     }}, {

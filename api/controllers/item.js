@@ -36,7 +36,9 @@ router.get('/', passport.isAuthenticated(), (req, res) => {
 
 router.post('/create', passport.isAuthenticated(), upload.array('photos'), async (req, res) => {
   let photos = [];
-  
+  const timeSlots = req.body.dateTimes.split(',').map(dt => new Date(dt));
+  // console.log(timeSlots);
+  // console.log([new Date()]);
   for (let file of req.files) {
     await cloudinary.uploader.upload(file.path, async (error, result) => {
       photos.push(result.secure_url);
@@ -51,7 +53,8 @@ router.post('/create', passport.isAuthenticated(), upload.array('photos'), async
     donatorId: req.user.id,
     receiverId: null,
     category: req.body.category,
-    photos: photos
+    photos: photos,
+    timeSlots: timeSlots
   })
     .then(result => { res.json(result) })
     .catch(err => { res.status(400).json({ error: err }) });

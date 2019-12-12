@@ -6,12 +6,15 @@ import M from "materialize-css";
 
 export default itemId => {
   const [itemReqMessage, setItemReqMessage] = useState('');
+  const [selectedSlot, setSelectedSlot] = useState(null);
   const [waitlistable, setWaitlistable] = useState(false);
-
+  const [timeSlots, setTimeSlots] = useState([]);
+  
   useEffect(() => {
     backend.get(`/receiver/waitlist/waitlistable/item/${itemId}`)
     .then(res => {
       setWaitlistable(res.data.waitlistable);
+      setTimeSlots(res.data.item.timeSlots);
     })
     .catch(err => {
       console.error(err.message);
@@ -23,8 +26,14 @@ export default itemId => {
     setItemReqMessage(e.target.value);
   }
 
+  const handleTimeSelect = e => {
+    e.target.checked
+      ? setSelectedSlot(e.target.value)
+      : setSelectedSlot(null);
+  }
+
   const handleRequestItem = (e, itemId) => {
-    backend.post('/receiver/waitlist/create', {itemId, message : itemReqMessage})
+    backend.post('/receiver/waitlist/create', { itemId, message : itemReqMessage, selectedSlot })
       .then( result => {
         history.push('/items/waitlist');
       })
@@ -40,5 +49,5 @@ export default itemId => {
     });
   }
 
-  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, initCarousel}; 
+  return {handleRequestItem, handleChangeMessage, itemReqMessage, waitlistable, initCarousel, timeSlots, handleTimeSelect, selectedSlot}; 
 }
