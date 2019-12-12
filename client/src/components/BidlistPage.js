@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 
 import backend from '../apis/backend';
 
 const BidlistPage = () => {
   const [items, setItems] = useState([]);
   const [messages, setMessages] = useState(null);
-  console.log(messages);
+  
   const fetchBidlist = async () => {
     const res = await backend.get('/donator/bidlist/');
     setItems(res.data);
@@ -14,6 +15,11 @@ const BidlistPage = () => {
   const fetchMessage = async itemId => {
     const res = await backend.get(`/donator/bidlist/item/${itemId}`);
     setMessages(res.data);
+  }
+
+  const declineMessage = async (itemId, receiverId) => {
+    await backend.put(`/donator/bidlist/item/decline/${itemId}`, { receiverId: receiverId });
+    fetchMessage(itemId);
   }
 
   const renderMessages = () => {
@@ -28,11 +34,12 @@ const BidlistPage = () => {
             return (
               <div className="row">
                 <div className="col s12 m10">
-                  { message.message }
+                  <div>{ message.message }</div>
+                  <div>Selected Time: { moment(message.time).format('LLLL') }</div>
                 </div>
                 <div className="col s12 m2">
                   <button className="btn">Approve</button>
-                  <button className="btn">Decline</button>
+                  <button className="btn" onClick={() => declineMessage(message.itemId, message.receiverId)}>Decline</button>
                 </div>
               </div>
             )
