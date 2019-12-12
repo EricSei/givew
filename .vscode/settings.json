@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "givew",
+            "dialect": "PostgreSQL",
+            "name": "givew",
+            "password": "ctp_pass",
+            "port": 5432,
+            "server": "localhost",
+            "username": "ctp_user"
+        }
+    ]
+}

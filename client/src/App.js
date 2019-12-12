@@ -3,7 +3,9 @@ import { Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import history            from './history';
+import { UserProvider }   from './contexts/UserContext';
 import { AuthProvider }   from './contexts/AuthContext';
+import { ItemsProvider }  from './contexts/ItemsContext';
 import useAuth            from './hooks/useAuth';
 import Navbar             from './components/NavBar';
 import Signout            from './components/SignOut';
@@ -11,6 +13,9 @@ import Landing            from './components/LandingPage';
 import Signin             from './components/SigninPage';
 import Signup             from './components/SignUpPage';
 import CreateDonationPage from './components/CreateDonationPage';
+import ItemPage           from './components/ItemPage';
+import WaitlistPage       from './components/WaitlistPage';
+import BidlistPage        from './components/BidlistPage';
 
 const App = () => {
   useAuth();
@@ -19,8 +24,8 @@ const App = () => {
     <Router history={history}>
       <div className="container">
         <Switch>
-          <Route path="/signin" component={SigninContainer} />
-          <Route path="/signup" component={SignupContainer} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
           <Route component={DefaultContainer} />
         </Switch>
       </div>
@@ -28,27 +33,26 @@ const App = () => {
   )
 };
 
-const SigninContainer = () => (
-  <>
-    <Route path="/signin" component={Signin} />
-  </>
-);
-
-const SignupContainer = () => (
-  <>
-    <Route path="/signup" component={Signup} />
-  </>
-);
-
 const DefaultContainer = () => (
   <>
     <Navbar />
     <Route path="/donate/create" component={CreateDonationPage} />
-    <Route path='/signout' component={Signout} />
-    <Route path="/" component={Landing} />
+    <Route path="/signout" component={Signout} />
+    <Route path="/items/waitlist" component={WaitlistPage} />
+    <Route path="/items/bidlist" component={BidlistPage} />
+    <Route path="/item" component={ItemPage} />
+    <Route path="/" component={Landing} exact />
   </>
 );
 
-export default () => <AuthProvider><App /></AuthProvider>;
+export default () => (
+  <UserProvider>
+    <AuthProvider>
+      <ItemsProvider>
+          <App />
+      </ItemsProvider>
+    </AuthProvider>
+  </UserProvider>
+);
 
 

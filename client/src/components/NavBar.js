@@ -2,21 +2,23 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import useMaterialize from '../hooks/useMaterialize';
-import AuthContext from '../contexts/AuthContext';
+import AuthContext    from '../contexts/AuthContext';
+import UserContext    from '../contexts/UserContext'
 
 const Navbar = () => {
   useMaterialize();
-  const { token } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
+  const { user }   = useContext(UserContext);
 
-  return token
+  return isAuth
     ? (
       <div>
         {/* Dropdown Options */}
         <ul id="user-dropdown" className="dropdown-content">
 					<li><Link to="/profile" className="quarter-bigger">Profile</Link></li>
           <li><Link to="/donate/create" className="quarter-bigger">Create Donation</Link></li>
-          <li><Link to="/items/reserved" className="quarter-bigger">Reserved Items</Link></li>
-          <li><Link to="/items/donated" className="quarter-bigger">Donated Items</Link></li>                
+          <li><Link to="/items/waitlist" className="quarter-bigger">My Waitlist</Link></li>
+          <li><Link to="/items/bidlist" className="quarter-bigger">My Bidlist</Link></li>                
         </ul>
         {/* Main Navbar */}
         <nav>
@@ -26,7 +28,7 @@ const Navbar = () => {
             <div className="">
               <ul className="right hide-on-med-and-down">
                 <li className=""><Link to="/profile" className="quarter-bigger dropdown-trigger" data-target="user-dropdown">
-									{/* Account Name Placeholder*/}Account Name<i className="material-icons right">arrow_drop_down</i>
+									{user.username}<i className="material-icons right">arrow_drop_down</i>
 								</Link></li>
                 <li className=""><Link to="/signout" className="quarter-bigger">Sign Out</Link></li>
               </ul>

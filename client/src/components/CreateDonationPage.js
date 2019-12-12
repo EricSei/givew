@@ -5,12 +5,8 @@ import useDonation    from '../hooks/useDonation';
 import history        from '../history';
 
 const CreateDonationPage = () => {
+  const [handleChange, handleUploadChange, onHandleSubmit, errMsg, dateTimes, addDateTime, handleDateTimeChange, removeDateTime] = useDonation();
   useMaterialize();
-  const [handleChange, handleUploadChange] = useDonation();
-
-  const onGoBack = e => {
-    history.goBack();
-  }
 
   return (
     <div className="row create-form-container">
@@ -23,6 +19,10 @@ const CreateDonationPage = () => {
             <div className="create-form-subtitle">Please provide details about the item you are donating.</div>
           </div>
         </div>
+        {/* error string placeholder */}
+        <div className="red-text">
+          { errMsg }
+        </div>
         {/* Form */}
         <div className="row">
           <div className="col s12 input-field">
@@ -30,7 +30,7 @@ const CreateDonationPage = () => {
             <label htmlFor="item-name">Name of Item</label>
           </div>
           <div className="col s12 input-field">
-            <textarea name="desc" id="item-desc" className="materialize-textarea" data-length="200" onChange={handleChange} />
+            <textarea name="description" id="item-desc" className="materialize-textarea" data-length="200" onChange={handleChange} />
             <label htmlFor="item-desc" id="item-desc-label">Item Description</label>
           </div>
           <div className="col s12 input-field">
@@ -73,14 +73,38 @@ const CreateDonationPage = () => {
             <input name="zipcode" id="zip" type="number" onChange={handleChange} />
             <label htmlFor="zip">Zipcode</label>
           </div>
+          <div className="col s12">
+            {
+              dateTimes.map((dateTime, i) => {
+                return (
+                  <div className="row valign-wrapper">
+                    <div className="col s5 input-field">
+                      <input id={i} name="date" type="text" className="datepicker" value={dateTime.date} />
+                      <label htmlFor={i}>Pick a date</label>
+                    </div>
+                    <div className="col s5 input-field">
+                      <input id={i} name="time" type="text" className="timepicker" value={dateTime.time} />
+                      <label htmlFor={i}>Pick a time</label>
+                    </div>
+                    <div className="col s2 input-field">
+                      <div onClick={() => removeDateTime(i)} style={{ cursor: "pointer", color: "#039be5" }}>Remove</div>
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
+          <div className="col s12 input-field">
+            <button className="btn" onClick={ () => addDateTime() }>Add More</button>
+          </div>
         </div>
       </div>
       {/* Footer Buttons */}
       <div className="col s6 input-field">
-        <button className="btn" onClick = {onGoBack}>Go Back</button>
+        <button className="btn" onClick={() => history.goBack()}>Go Back</button>
       </div>
       <div className="col s6 input-field right-align">
-        <button className="btn">Submit to Donate Item</button>
+        <button className="btn" onClick={onHandleSubmit}>Submit to Donate Item</button>
       </div>
     </div>
   );
