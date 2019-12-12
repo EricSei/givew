@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
       message: {
         type: DataTypes.STRING(1023),
         allowNull: false
+      },
+      time: {
+        type: DataTypes.DATE,
+        allowNull: false
       }
     }, 
     {
