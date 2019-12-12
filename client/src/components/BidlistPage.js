@@ -22,6 +22,10 @@ const BidlistPage = () => {
     fetchMessage(itemId);
   }
 
+  const acceptMessage = async (itemId, receiverId, time) => {
+    await backend.put(`/donator/bidlist/item/accept/${itemId}`, { receiverId: receiverId, time: time });
+  }
+
   const renderMessages = () => {
     if (!messages) return <div>Select an item to show messages.</div>;
     
@@ -38,7 +42,7 @@ const BidlistPage = () => {
                   <div>Selected Time: { moment(message.time).format('LLLL') }</div>
                 </div>
                 <div className="col s12 m2">
-                  <button className="btn">Approve</button>
+                  <button className="btn" onClick={() => acceptMessage(message.itemId, message.receiverId, message.time)}>Approve</button>
                   <button className="btn" onClick={() => declineMessage(message.itemId, message.receiverId)}>Decline</button>
                 </div>
               </div>
