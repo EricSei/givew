@@ -16,6 +16,8 @@ import CreateDonationPage from './components/CreateDonationPage';
 import ItemPage           from './components/ItemPage';
 import WaitlistPage       from './components/WaitlistPage';
 import BidlistPage        from './components/BidlistPage';
+import PickupListPage     from './components/PickupListPage';
+import DropoffListPage    from './components/DropoffListPage';
 
 const App = () => {
   useAuth();
@@ -36,6 +38,8 @@ const App = () => {
 const DefaultContainer = () => (
   <>
     <Navbar />
+    <Route path="/dropofflist" component={DropoffListPage} />
+    <Route path="/pickuplist" component={PickupListPage} />
     <Route path="/donate/create" component={CreateDonationPage} />
     <Route path="/signout" component={Signout} />
     <Route path="/items/waitlist" component={WaitlistPage} />

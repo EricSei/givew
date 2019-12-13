@@ -75,3 +75,12 @@ router.get('/waitlist/', passport.isAuthenticated(), (req, res) => {
 });
 
 module.exports = router;
+
+// @route GET /api/receiver/pickuplist/
+// @desc Retrieve all items that have receiverId == req.user.id
+// @access Private
+router.get('/pickuplist', passport.isAuthenticated(), (req, res) => {
+  Item.findAll({ where: { receiverId: req.user.id } })
+    .then(result => res.json(result))
+    .catch(error => res.json(error));
+});

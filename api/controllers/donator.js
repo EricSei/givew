@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Sequelize = require('sequelize');
 
 const passport = require('../middlewares/authentication');
 const { Item, Waitlist } = require('../models');
@@ -50,6 +51,15 @@ router.put('/bidlist/item/accept/:id', passport.isAuthenticated(), async (req, r
   await Waitlist.destroy({ where: { itemId: req.params.id } });
 
   res.json({ sucess: true });
+});
+
+// @route GET /api/donator/dropofflist/
+// @desc Retrieve all items that have id == req.user.id && receiverId != null
+// @access Private
+router.get('/dropofflist', passport.isAuthenticated(), (req, res) => {
+  Item.findAll({ where: { donatorId: req.user.id, receiverId: { [Sequelize.Op.ne]: null } } })
+    .then(result => res.json(result))
+    .catch(error => res.json(error));
 });
 
 module.exports = router;
