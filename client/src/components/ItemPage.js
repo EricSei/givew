@@ -44,29 +44,40 @@ const ItemPage = props => {
   );
   
   return (
-    <div>
-      <div>Photos: </div>
-      <div className="carousel" onLoad={initCarousel}>
-        {
-          props.location.state.photos.map(photo => {
-            return <span className="carousel-item"><img src={photo} style={{ width: "150px", height: "auto" }} /></span>
-          })
-        }  
+    <div className="row item-page-container">
+      <div className="col s12">
+        <div className="row item-page-main">
+          <div className="col s12 m6">
+            <div className="carousel" onLoad={initCarousel}>
+              {
+                props.location.state.photos.map(photo => {
+                  return <span className="carousel-item"><img src={photo} style={{ width: "15rem", height: "auto" }} /></span>
+                })
+              }  
+            </div>
+          </div>
+          <div className="col s12 m6 item-info">
+            <div>
+              <div className="item-page-title">{props.location.state.name}</div>
+              <div className="item-page-zip">ZIP {props.location.state.zipcode}</div>
+              <div className="item-page-desc">{props.location.state.description}</div>
+              <div className="item-page-times">
+                <div>Available Timeslots:</div>
+                {
+                  timeSlots.map(timeSlot => {
+                    return (
+                      <>
+                        <div className="item-page-time">- {moment(timeSlot).format('LLLL')}</div>
+                      </>
+                    )
+                  })
+                }
+              </div>
+              { requestButton }
+            </div>
+          </div>
+        </div>
       </div>
-      <div>{props.location.state.name}</div>
-      <div>{props.location.state.description}</div>
-      <div>
-        {
-          timeSlots.map(timeSlot => {
-            return (
-              <>
-                <div>{moment(timeSlot).format('LLLL')}</div>
-              </>
-            )
-          })
-        }
-      </div>
-      { requestButton }
     </div>
   );
 }

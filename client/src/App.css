@@ -200,3 +200,70 @@ nav {
 }
 
 /* ------------------------- End: Landing Page  ------------------------- */
+
+/* -------------------------- Begin: Item Page  ------------------------- */
+.item-page-container {
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding-top: 2rem;
+}
+
+.item-page-main {
+  background: #fff;
+  display: flex;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4rem!important;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.item-page-title {
+  color: #82bb92;
+  margin-top: 3rem;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.item-page-desc {
+  margin: 1rem 0;
+}
+
+.item-page-zip {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.item-page-times {
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------- End: Item Page  -------------------------- */
+
+/* --------------------------- Begin: Waitlist  -------------------------- */
+
+.waitlist-container {
+  padding: 0 10rem;
+  background: #f4f4f4;
+  min-height: 90vh;
+}
+
+#waitlist-title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+th {
+  color: #82bb92;
+}
+
+#td-item-name {
+  color: #000;
+  font-weight: 500;
+}
+
+/* ---------------------------- End: Waitlist  --------------------------- */
