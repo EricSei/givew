@@ -16,23 +16,31 @@ const PickupListPage = () => {
   }
 
   return (
-    <div>
-      <div>Pickup List</div>
-      <div>These items are for you to pick up at scheduled time.</div>
-      <div>
-        {
-          pickups.map(item => {
-            return (
-              <div>
-                <div>{item.name}</div>
-                <div>{item.description}</div>
-                <div>{item.location}, {item.zipcode}</div>
-                <div>{moment(item.timeSlots[0]).format('LLLL')}</div>
-              </div>
-            )
-          })
-        }
-      </div>
+    <div className="waitlist-container">
+      <div id="waitlist-title">Pickup List</div>
+      {/* <div>These items are for you to pick up at the location and time.</div> */}
+      <table className="highlight card">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Location</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            pickups.map(item => {
+              return (
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.location}, {item.zipcode}</td>
+                  <td>{moment(item.timeSlots[0]).format('LLLL')}</td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
     </div>
   );
 };

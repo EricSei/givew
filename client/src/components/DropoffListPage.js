@@ -16,22 +16,30 @@ const DropoffListPage = () => {
   }
 
   return (
-    <div>
-      <div>Dropoff List Page</div>
-      <div>
-        {
-          dropOffs.map(item => {
-            return (
-              <div>
-                <div>{item.name}</div>
-                <div>{item.description}</div>
-                <div>{item.location}, {item.zipcode}</div>
-                <div>{moment(item.timeSlots[0]).format('LLLL')}</div>
-              </div>
-            )
-          })
-        }
-      </div>
+    <div className="waitlist-container">
+      <div id="waitlist-title">Dropoff List</div>
+      <table className="highlight card">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Location</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            dropOffs.map(item => {
+              return (
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.location}, {item.zipcode}</td>
+                  <td>{moment(item.timeSlots[0]).format('LLLL')}</td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
     </div>
   );
 };
