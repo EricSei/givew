@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import GoogleIcon from '../assets/logos/google-icon.png'
+import Logo from '../assets/logos/logo.png';
 import useSignin  from '../hooks/useSignin';
 
 const SigninPage = () => {
@@ -11,7 +12,9 @@ const SigninPage = () => {
     <>
       <div className="row fullscreen-container">
         <div className="col s6 slide-col">
-          <div className="side-bg-left"></div>
+          <div className="side-bg-left">
+            {/* <img src={Logo} /> */}
+          </div>
         </div>
         <div className="col s6 form-col">
           {/* Top-Right Corner */}
