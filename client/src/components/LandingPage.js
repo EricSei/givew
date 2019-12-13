@@ -8,8 +8,8 @@ const Landing = () => {
   
   return (
     <div className="landing-container">
-      <div className="row" style={{ margin: 0 }}>
-        <div className="col s12 m12 category-bar">
+      <div className="row" style={{ margin: 0, overflow: "auto" }}>
+        <div className="col s-12 m-12 category-bar">
           <div className={`category ${selected === "Latest"? "selected" : null}`} onClick={() => { fetchLatest(); setSelected("Latest"); }}>Latest</div>
           <div className={`category ${selected === "furniture"? "selected" : null}`} onClick={() => fetchByCategory("furniture")}>Furnitures</div>
           <div className={`category ${selected === "electronics"? "selected" : null}`} onClick={() => fetchByCategory("electronics")}>Electronics</div>
