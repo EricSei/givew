@@ -11,7 +11,7 @@ const SignUpPage = () => {
     <>
       <div className="row fullscreen-container">
         <div className="col s6 slide-col">
-          <div className="side-bg-left"></div>
+          <div className="side-bg-left" style={{ background: "#ffcc80" }}></div>
         </div>
         <div className="col s6 form-col">
           {/* Top-Right Corner */}
