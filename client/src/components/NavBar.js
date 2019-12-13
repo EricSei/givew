@@ -18,7 +18,9 @@ const Navbar = () => {
 					<li><Link to="/profile" className="quarter-bigger">Profile</Link></li>
           <li><Link to="/donate/create" className="quarter-bigger">Create Donation</Link></li>
           <li><Link to="/items/waitlist" className="quarter-bigger">My Waitlist</Link></li>
-          <li><Link to="/items/bidlist" className="quarter-bigger">My Bidlist</Link></li>                
+          <li><Link to="/items/bidlist" className="quarter-bigger">My Bidlist</Link></li>
+          <li><Link to="/pickuplist" className="quarter-bigger">Pickup List</Link></li>
+          <li><Link to="/dropofflist" className="quarter-bigger">Dropoff List</Link></li>
         </ul>
         {/* Main Navbar */}
         <nav>
