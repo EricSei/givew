@@ -23,7 +23,7 @@ const Landing = () => {
             return (
               <div className="col s12 m4 center item-container">
                 <Link key={item.id} to={{ pathname: '/item', state: item }}>
-                  <img src={item.photos[0]} style={{ width: "150px", height: "auto" }} />
+                  <img src={item.photos[0]} style={{ width: "12rem", height: "auto" }} />
                   <div className="item-name">{item.name}</div>
                   <div className="item-zipcode">ZIP {item.zipcode}</div>
                 </Link>
