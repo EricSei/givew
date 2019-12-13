@@ -37,8 +37,7 @@ router.get('/', passport.isAuthenticated(), (req, res) => {
 router.post('/create', passport.isAuthenticated(), upload.array('photos'), async (req, res) => {
   let photos = [];
   const timeSlots = req.body.dateTimes.split(',').map(dt => new Date(dt));
-  // console.log(timeSlots);
-  // console.log([new Date()]);
+  
   for (let file of req.files) {
     await cloudinary.uploader.upload(file.path, async (error, result) => {
       photos.push(result.secure_url);
@@ -65,7 +64,14 @@ router.get('/sort', (req, res) => {
   for (let query in req.query) {
     queries.push([query, req.query[query]]);
   }
+
   Item.findAll({ order: queries, where: { receiverId: null } })
+    .then(result => { res.json(result) })
+    .catch(error => { res.status(400).json({ error }) });
+});
+
+router.get('/filter', (req, res) => {
+  Item.findAll({ order: [[ 'createdAt', 'DESC' ]], where: { receiverId: null, category: req.query.category } })
     .then(result => { res.json(result) })
     .catch(error => { res.status(400).json({ error }) });
 });

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import backend from '../apis/backend';
 
@@ -11,18 +13,36 @@ const WaitlistPage = () => {
   } , []);
 
   return (
-    <div>
-      <div>My Waitlist</div>
-      <div>These are all the items that I've requested.</div>
-      {
-        !waitlist.length
-          ? <div>None</div>
-          : waitlist.map(item => {
-              return (
-                <div>{item.id}, {item.message}</div>
-              )
-            })
-      }
+    <div className="waitlist-container">
+      <div id="waitlist-title">My Waitlist</div>
+      <table className="highlight card">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Selected Time</th>
+            <th>My Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            !waitlist.length
+              ? null
+              : waitlist.map(item => {
+                  return (
+                    <tr>
+                      <td className="td-item-name">
+                        <Link to={{ pathname: '/item', state: item.item }}>
+                          <div id="td-item-name">{item.item.name}</div>
+                        </Link>
+                      </td>
+                      <td>{moment(item.time).format('LLLL')}</td>
+                      <td>{item.message}</td>
+                    </tr>
+                  )
+                })
+          }
+        </tbody>
+      </table>
     </div>
   );
 };

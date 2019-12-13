@@ -32,7 +32,7 @@
 }
 
 .side-bg-left {
-  background: #80cbc4;
+  background: #69f0ae;
   width: inherit;
   height: 100%;
   border-radius: 2.5rem 0 0 2.5rem;
@@ -149,3 +149,170 @@ nav {
 }
 
 /* --------------------- End: Create Donation Page  --------------------- */
+
+/* ------------------------ Begin: Landing Page  ------------------------ */
+
+.category-bar {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0!important;
+  background: #FFF;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.category {
+  font-size: 1.25rem;
+  margin: 0 0.8rem;
+  color: #999;
+  cursor: pointer;
+}
+
+.selected {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.main {
+  background: #f4f4f4;
+  min-height: 100vh;
+  padding: 1.5rem 0;
+}
+
+.item-container {
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item-container:hover {
+  background: #fff;
+}
+
+.item-name {
+  color: #757575;
+  font-size: 1.5rem;
+}
+
+.item-zipcode {
+  font-size: 0.8rem;
+  color: #757575;
+}
+
+/* ------------------------- End: Landing Page  ------------------------- */
+
+/* -------------------------- Begin: Item Page  ------------------------- */
+.item-page-container {
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding-top: 2rem;
+}
+
+.item-page-main {
+  background: #fff;
+  display: flex;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4rem!important;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.item-page-title {
+  color: #82bb92;
+  margin-top: 3rem;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.item-page-desc {
+  margin: 1rem 0;
+}
+
+.item-page-zip {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.item-page-times {
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------- End: Item Page  -------------------------- */
+
+/* --------------------------- Begin: Waitlist  -------------------------- */
+
+.waitlist-container {
+  padding: 0 10rem;
+  background: #f4f4f4;
+  min-height: 90vh;
+}
+
+#waitlist-title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+th {
+  color: #82bb92;
+}
+
+#td-item-name {
+  color: #000;
+  font-weight: 500;
+}
+
+/* ---------------------------- End: Waitlist  --------------------------- */
+
+/* ---------------------------- Begin: Bidlist  -------------------------- */
+
+#bidlist-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1.2rem 0;
+  color: lightslategrey;
+}
+
+.donated-item-title {
+  cursor: pointer;
+  padding: 0.88rem 0;
+  font-size: 1.2rem;
+  color: lightgray;
+}
+
+.donated-item-title:hover {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.donated-item-title-selected {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.message-column {
+  padding: 2rem!important;
+}
+
+.message-title, .time-title {
+  font-weight: 500;
+}
+
+.message-content, .time-content {
+  margin-bottom: 1.5rem;
+}
+
+.bid-button {
+  border-radius: 2rem;
+  margin: 0.1rem 0;
+}
+
+.message-container {
+  border-bottom: 1px solid lightgray;
+}
+
+/* ----------------------------- End: Bidlist  --------------------------- */
