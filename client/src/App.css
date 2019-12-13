@@ -149,3 +149,54 @@ nav {
 }
 
 /* --------------------- End: Create Donation Page  --------------------- */
+
+/* ------------------------ Begin: Landing Page  ------------------------ */
+
+.category-bar {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0!important;
+  background: #FFF;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.category {
+  font-size: 1.25rem;
+  margin: 0 0.8rem;
+  color: #999;
+  cursor: pointer;
+}
+
+.selected {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.main {
+  background: #f4f4f4;
+  min-height: 100vh;
+  padding: 1.5rem 0;
+}
+
+.item-container {
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item-container:hover {
+  background: #fff;
+}
+
+.item-name {
+  color: #757575;
+  font-size: 1.5rem;
+}
+
+.item-zipcode {
+  font-size: 0.8rem;
+  color: #757575;
+}
+
+/* ------------------------- End: Landing Page  ------------------------- */
