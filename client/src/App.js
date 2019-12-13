@@ -1,23 +1,24 @@
-import React                     from 'react'
+import React from 'react'
 import { Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import history            from './history';
-import { UserProvider }   from './contexts/UserContext';
-import { AuthProvider }   from './contexts/AuthContext';
-import { ItemsProvider }  from './contexts/ItemsContext';
-import useAuth            from './hooks/useAuth';
-import Navbar             from './components/NavBar';
-import Signout            from './components/SignOut';
-import Landing            from './components/LandingPage';
-import Signin             from './components/SigninPage';
-import Signup             from './components/SignUpPage';
+import history from './history';
+import { UserProvider } from './contexts/UserContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { ItemsProvider } from './contexts/ItemsContext';
+import useAuth from './hooks/useAuth';
+import Navbar from './components/NavBar';
+import Signout from './components/SignOut';
+import Landing from './components/LandingPage';
+import Signin from './components/SigninPage';
+import Signup from './components/SignUpPage';
 import CreateDonationPage from './components/CreateDonationPage';
-import ItemPage           from './components/ItemPage';
-import WaitlistPage       from './components/WaitlistPage';
-import BidlistPage        from './components/BidlistPage';
-import PickupListPage     from './components/PickupListPage';
-import DropoffListPage    from './components/DropoffListPage';
+import ItemPage from './components/ItemPage';
+import WaitlistPage from './components/WaitlistPage';
+import BidlistPage from './components/BidlistPage';
+import PickupListPage from './components/PickupListPage';
+import DropoffListPage from './components/DropoffListPage';
+import Profile from './components/Profile';
 
 const App = () => {
   useAuth();
@@ -37,7 +38,9 @@ const App = () => {
 
 const DefaultContainer = () => (
   <>
+
     <Navbar />
+    <Route path="/profile" component={Profile} />
     <Route path="/dropofflist" component={DropoffListPage} />
     <Route path="/pickuplist" component={PickupListPage} />
     <Route path="/donate/create" component={CreateDonationPage} />
@@ -53,7 +56,7 @@ export default () => (
   <UserProvider>
     <AuthProvider>
       <ItemsProvider>
-          <App />
+        <App />
       </ItemsProvider>
     </AuthProvider>
   </UserProvider>
