@@ -267,3 +267,52 @@ th {
 }
 
 /* ---------------------------- End: Waitlist  --------------------------- */
+
+/* ---------------------------- Begin: Bidlist  -------------------------- */
+
+#bidlist-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1.2rem 0;
+  color: lightslategrey;
+}
+
+.donated-item-title {
+  cursor: pointer;
+  padding: 0.88rem 0;
+  font-size: 1.2rem;
+  color: lightgray;
+}
+
+.donated-item-title:hover {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.donated-item-title-selected {
+  color: #82bb92;
+  font-weight: 500;
+}
+
+.message-column {
+  padding: 2rem!important;
+}
+
+.message-title, .time-title {
+  font-weight: 500;
+}
+
+.message-content, .time-content {
+  margin-bottom: 1.5rem;
+}
+
+.bid-button {
+  border-radius: 2rem;
+  margin: 0.1rem 0;
+}
+
+.message-container {
+  border-bottom: 1px solid lightgray;
+}
+
+/* ----------------------------- End: Bidlist  --------------------------- */
