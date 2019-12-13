@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 import useItems from '../hooks/useItems'
 
 const Landing = () => {
-  let [items] = useItems();
+  let [items, fetchByCategory, fetchLatest, selected, setSelected] = useItems();
   
   return (
     <div className="landing-container">
       <div className="row" style={{ margin: 0 }}>
         <div className="col s12 m12 category-bar">
-          <div className="category selected">Latest</div>
-          <div className="category">Furnitures</div>
-          <div className="category">Electronics</div>
-          <div className="category">Appliances</div>
-          <div className="category">Others</div>
+          <div className={`category ${selected === "Latest"? "selected" : null}`} onClick={() => { fetchLatest(); setSelected("Latest"); }}>Latest</div>
+          <div className={`category ${selected === "furniture"? "selected" : null}`} onClick={() => fetchByCategory("furniture")}>Furnitures</div>
+          <div className={`category ${selected === "electronics"? "selected" : null}`} onClick={() => fetchByCategory("electronics")}>Electronics</div>
+          <div className={`category ${selected === "appliances"? "selected" : null}`} onClick={() => fetchByCategory("appliances")}>Appliances</div>
+          <div className={`category ${selected === "other"? "selected" : null}`} onClick={() => fetchByCategory("other")}>Others</div>
         </div>
       </div>
       <div className="row main">

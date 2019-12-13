@@ -64,7 +64,14 @@ router.get('/sort', (req, res) => {
   for (let query in req.query) {
     queries.push([query, req.query[query]]);
   }
+
   Item.findAll({ order: queries, where: { receiverId: null } })
+    .then(result => { res.json(result) })
+    .catch(error => { res.status(400).json({ error }) });
+});
+
+router.get('/filter', (req, res) => {
+  Item.findAll({ order: [[ 'createdAt', 'DESC' ]], where: { receiverId: null, category: req.query.category } })
     .then(result => { res.json(result) })
     .catch(error => { res.status(400).json({ error }) });
 });
